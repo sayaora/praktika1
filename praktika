@@ -14,6 +14,14 @@ void Rectangle(double a,double b,double h){
 		Integral += h * fun(a + h * (i - 0.5));}
 	cout <<"Значение определенного интеграла методом серединных" "прямоугольников = "<< Integral << "\n";
 }
+void Trapezoid(double a,double b,double h){
+	double n = (b - a) / h;
+	double Integral = h * (fun(a) + fun(b)) / 2.0;
+	for(int i = 1; i <= n-1; i++)
+		Integral += h * fun(a + h * i);
+	cout << "Значение определенного интеграла методом трапеции= "<< Integral << "\n";
+}
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -32,6 +40,27 @@ int _tmain(int argc, _TCHAR* argv[])
 	cin>>h;
 	double n; 
 	Rectangle(a,b,h);
-	system("PAUSE");
-	return 0;
+char j;
+	cout<<"Введите 0 чтобы завершить работу программы"<<endl;
+	cout<<"Введите 1 чтобы решить интеграл методом прямоугольников"<<endl;
+	cout<<"Введите 2 чтобы решить интеграл методом трапеций"<<endl;
+
+
+	while (true)
+	{
+		cin>>j;
+		switch(j)
+		{
+		case '0':
+			system ("PAUSE");
+			return 0;
+			break;
+
+		case '1':
+			Rectangle(a,b,h);
+			break;
+
+		case '2':
+			Trapezoid(a,b,h);
+			break;
 }
