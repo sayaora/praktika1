@@ -30,6 +30,12 @@ void Simpson(double a,double b,double h){
 		Integral +=  + 2.0 / 6.0 * h * fun(a + h * i);
 	cout << "I3 = " << Integral << "\n";
 }
+void Gauss(double a,double b,double h){
+	double n = (b - a) / h;
+	double Integral=((b-a)/2)*((fun((a+b)/2)-((b-a)/2*sqrt(3)))+
+		(fun((a+b)/2)+((b-a)/2*sqrt(3))));
+	cout << "I4 = " << Integral << "\n";
+}
 
 
 
@@ -50,11 +56,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	cin>>h;
 	double n; 
 	Rectangle(a,b,h);
-char j;
+	char j;
 	cout<<"Введите 0 чтобы завершить работу программы"<<endl;
 	cout<<"Введите 1 чтобы решить интеграл методом прямоугольников"<<endl;
 	cout<<"Введите 2 чтобы решить интеграл методом трапеций"<<endl;
 	cout<<"Введите 3 чтобы решить интеграл методом Симпсона"<<endl;
+	cout<<"Введите 4 чтобы решить интеграл методом Гаусса"<<endl;
 
 	while (true)
 	{
@@ -75,6 +82,9 @@ char j;
 			break;
 		case '3':
 			Simpson(a,b,h);
+			break;
+		case '4':
+			Gauss(a,b,h);
 			break;
 
 default:cout<<"Вы ошиблись, попробуйте еще раз\n";
