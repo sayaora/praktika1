@@ -1,0 +1,37 @@
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+double fun(double x)
+{
+	return sin(x);
+}
+void Rectangle(double a,double b,double h){
+	double n = (b - a) / h;
+	double Integral = 0.0;
+	for(int i = 1; i <= n; i++){
+		Integral += h * fun(a + h * (i - 0.5));}
+	cout <<"Значение определенного интеграла методом серединных" "прямоугольников = "<< Integral << "\n";
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	setlocale(LC_CTYPE, "Russian_Russia.1251 ");
+	double result;
+	int i; // счётчик
+	double Integral; 
+	double a;
+	cout<<"Введите нижний придел интеграла"<<endl;
+	cin>>a;
+	double b;
+	cout<<"Введите верхний придел интеграла"<<endl;
+	cin>>b;
+	double h;
+	cout<<"Задайте шаг интегрирования"<<endl;
+	cin>>h;
+	double n; 
+	Rectangle(a,b,h);
+	system("PAUSE");
+	return 0;
+}
