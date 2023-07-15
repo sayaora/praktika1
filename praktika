@@ -21,6 +21,16 @@ void Trapezoid(double a,double b,double h){
 		Integral += h * fun(a + h * i);
 	cout << "Значение определенного интеграла методом трапеции= "<< Integral << "\n";
 }
+void Simpson(double a,double b,double h){
+	double n = (b - a) / h;
+	double Integral = h * (fun(a) + fun(b)) / 6.0;
+	for(int i = 1; i <= n; i++)
+		Integral +=  4.0 / 6.0 * h * fun(a + h * (i - 0.5));
+	for(int i = 1; i <= n-1; i++)
+		Integral +=  + 2.0 / 6.0 * h * fun(a + h * i);
+	cout << "I3 = " << Integral << "\n";
+}
+
 
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -44,7 +54,7 @@ char j;
 	cout<<"Введите 0 чтобы завершить работу программы"<<endl;
 	cout<<"Введите 1 чтобы решить интеграл методом прямоугольников"<<endl;
 	cout<<"Введите 2 чтобы решить интеграл методом трапеций"<<endl;
-
+	cout<<"Введите 3 чтобы решить интеграл методом Симпсона"<<endl;
 
 	while (true)
 	{
@@ -63,4 +73,13 @@ char j;
 		case '2':
 			Trapezoid(a,b,h);
 			break;
+		case '3':
+			Simpson(a,b,h);
+			break;
+
+default:cout<<"Вы ошиблись, попробуйте еще раз\n";
+
+			break;
+		}
+	}
 }
